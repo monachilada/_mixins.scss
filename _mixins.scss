@@ -1,0 +1,28 @@
+@mixin font-size($size, $height: 1.2em, $margin: 1.5em) {
+	font-size: $size * 10 px;
+	font-size: $size;
+	line-height: $height;
+	@if $margin > 0 { margin-bottom: ($margin/$size)+em; } @else { margin-bottom: 0; }
+}
+
+@mixin keyframes($name) {
+	@-webkit-keyframes #{$name} {
+		@content; 
+	}
+	@-moz-keyframes #{$name} {
+		@content;
+	}
+	@-ms-keyframes #{$name} {
+		@content;
+	}
+	@keyframes #{$name} {
+		@content;
+	} 
+}
+
+@mixin animation($styles...) {
+	-webkit-animation: $styles;
+	-moz-animation: $styles;
+	-o-animation: $styles;
+	animation: $styles;
+}
