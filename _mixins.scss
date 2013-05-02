@@ -2,6 +2,10 @@
 	font-size: $size;
 	line-height: $height;
 	@if $margin > 0 { margin-bottom: ($margin/$size)+em; } @else { margin-bottom: 0; }
+	
+	* {
+		font-size: 1em;
+	}
 }
 
 @mixin keyframes($name) {
