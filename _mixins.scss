@@ -10,7 +10,7 @@
 
 @mixin keyframes($name) {
 	@-webkit-keyframes #{$name} {
-		@content; 
+		@content;
 	}
 	@-moz-keyframes #{$name} {
 		@content;
@@ -28,4 +28,19 @@
 	-moz-animation: $styles;
 	-o-animation: $styles;
 	animation: $styles;
+}
+
+@mixin placeholder {
+	::-webkit-input-placeholder {
+		@content;
+	}
+	:-moz-placeholder { /* Firefox 18- */
+		@content;
+	}
+	::-moz-placeholder {  /* Firefox 19+ */
+		@content; 
+	}
+	:-ms-input-placeholder {  
+		@content;
+	}
 }
