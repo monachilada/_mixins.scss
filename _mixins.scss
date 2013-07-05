@@ -31,16 +31,16 @@
 }
 
 @mixin placeholder {
-	::-webkit-input-placeholder {
+	&::-webkit-input-placeholder {
 		@content;
 	}
-	:-moz-placeholder { /* Firefox 18- */
+	&:-moz-placeholder {
 		@content;
 	}
-	::-moz-placeholder {  /* Firefox 19+ */
+	&::-moz-placeholder {
 		@content; 
 	}
-	:-ms-input-placeholder {  
+	&:-ms-input-placeholder {  
 		@content;
 	}
 }
