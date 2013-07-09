@@ -44,3 +44,17 @@
 		@content;
 	}
 }
+
+@mixin noprint {
+	@media only print {
+		& { display: none; }
+	}
+}
+
+@mixin print {
+	@media only print {
+		& {
+			@content;
+		}
+	}
+}
