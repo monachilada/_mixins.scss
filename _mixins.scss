@@ -1,3 +1,64 @@
+@function parseInt($n) {
+  @return $n / ($n * 0 + 1);
+}
+
+@mixin rem($property, $values) {
+	$px : ();
+	$rem: ();
+	
+	@each $value in $values {
+	
+		@if $value == 0 or $value == auto {
+			$px : append($px, $value);
+			$rem: append($rem, $value);
+		}
+		
+		@else { 
+			$unit: unit($value);
+			$val: parseInt($value);
+			
+			@if $unit == "px" {
+				$px : append($px, $value);
+				$rem: append($rem, ($val / 10 + rem));
+			}
+			
+			@if $unit == "rem" {
+				$px : append($px, ($val * 10 + px));
+				$rem: append($rem, $value);
+			}
+		}
+	}
+	
+	@if $px == $rem {
+		#{$property}: $px;
+	} @else {
+		#{$property}: $px;
+		#{$property}: $rem;
+	}
+}
+
+@mixin rem-font($size: 15px, $height: 1.2, $padding: 18px) {
+	@if unitless($size) {
+		$size: $size * 1px;
+	}
+	
+	@if unitless($padding) {
+		$padding: $padding * 1px;
+	}
+	
+	@include rem(font-size, $size);
+	line-height: $height;	
+	@include rem(padding-bottom, $padding);
+}
+
+@mixin rem-margin($value) {
+	@include rem(margin, $value);
+}
+
+@mixin rem-padding($value) {
+	@include rem(padding, $value);
+}
+
 @mixin font-size($size, $height: 1.2em, $margin: 1.5em) {
 	font-size: $size;
 	line-height: $height;
@@ -6,14 +67,6 @@
 	* {
 		font-size: 1em;
 	}
-}
-
-@mixin rem-font($size: 15, $height: 1.2, $margin: 15) {
-	font-size: ($size)+px;
-	font-size: ($size / 10)+rem;
-	line-height: $height;
-	padding-bottom: ($margin)+px;
-	padding-bottom: ($margin / 10)+rem;
 }
 
 @mixin keyframes($name) {
