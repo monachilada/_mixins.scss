@@ -37,7 +37,21 @@
 	}
 }
 
-@mixin rem-font($size: 15px, $height: 1.2, $padding: 18px) {
+@mixin font($size: 15px, $height: 1.2, $padding: 18px) {
+	@include rem(font-size, $size);
+	line-height: $height;	
+	@include rem(padding-bottom, $padding);
+}
+
+@mixin margin($value) {
+	@include rem(margin, $value);
+}
+
+@mixin padding($value) {
+	@include rem(padding, $value);
+}
+
+@mixin rem-font($size: 15, $height: 1.2, $padding: 18) {
 	@if unitless($size) {
 		$size: $size * 1px;
 	}
@@ -46,17 +60,7 @@
 		$padding: $padding * 1px;
 	}
 	
-	@include rem(font-size, $size);
-	line-height: $height;	
-	@include rem(padding-bottom, $padding);
-}
-
-@mixin rem-margin($value) {
-	@include rem(margin, $value);
-}
-
-@mixin rem-padding($value) {
-	@include rem(padding, $value);
+	@include font($size, $height, $padding);
 }
 
 @mixin font-size($size, $height: 1.2em, $margin: 1.5em) {
