@@ -1,5 +1,5 @@
 @function parseInt($n) {
-  @return $n / ($n * 0 + 1);
+	@return $n / ($n * 0 + 1);
 }
 
 @mixin rem($property, $values) {
@@ -71,6 +71,11 @@
 	* {
 		font-size: 1em;
 	}
+}
+
+@mixin font-family($family, $weight) {
+	font-family: $family;
+	font-weight: $weight;
 }
 
 @mixin keyframes($name) {
